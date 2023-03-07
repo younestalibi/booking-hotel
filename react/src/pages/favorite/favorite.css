@@ -1,0 +1,62 @@
+.favorite-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1024px;
+  }
+  .table-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .favorite-table td, .favorite-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .delete{
+    background-color: rgb(245, 20, 20) !important;
+  }
+  .table-container{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    max-width: 1024px;
+    flex-direction: column;
+    align-items: center;
+    /* height: 70vh; */
+    margin-bottom: 150px;
+  }
+  .Toastify__toast-theme--dark{
+    background-color: #03602d !important;
+  }
+  .savednotfound{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 65vh;
+    max-width: 1024px;
+  }
+  .favorite-table tr:nth-child(even){background-color: #f2f2f2;}
+  .btn{
+    background-color: #60096f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+  }
+  .favorite-table tr:hover {background-color: #ddd;}
+  
+  .favorite-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa91;
+    color: white;
+  }
+  

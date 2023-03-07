@@ -1,0 +1,45 @@
+.inscreption-container{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 20px;
+}
+.insception-wrapper{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    /* flex-direction: column; */
+}
+.inscreption-action{
+    flex: 1;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.inscreption-action button{
+    background-color: blueviolet;
+    padding: 10px;
+    width: 130px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+.inscreption-content{
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 2;
+    text-align: left;
+}
+.inscreption-action a{
+    background-color: aquamarine;
+    width: 130px;
+    margin-top: 5px;
+    padding: 6px 0px;
+    border-radius: 5px;
+    text-align: center;
+}
+/* .inscreption-content */
