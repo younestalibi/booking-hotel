@@ -18,24 +18,22 @@ const Posts = () => {
         if(!user){
             navigate('/login')
         }
-    },) 
+    },)
     useEffect(() => {
         async function test(e){
             axiosClient.get('/posts')
             .then(({data})=>{
-                console.log(data)
                 setPosts(data.hotels)
                 setLoad(false)
             })
             .catch(({response})=>{
                 setLoad(false)
-                console.log(response.status)
             })
         }
         test();
       },[]);
 
-    return ( 
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
@@ -45,9 +43,9 @@ const Posts = () => {
                     <code>{'>'} </code>
                     <span className='path-resluts'>My-posts</span>
                 </div>
-            </div> 
+            </div>
             {
-                load? 
+                load?
                 <div class="loader-posts"></div>
                 :
                 posts.length>0?
@@ -99,12 +97,11 @@ const Posts = () => {
                     <Link className='add-item' to='/list-property'>Add item</Link>
                 </div>
             }
-            
 
             <Email/>
             <Footer/>
         </div>
      );
 }
- 
+
 export default Posts;

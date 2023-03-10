@@ -34,34 +34,13 @@ function Login() {
     axiosClient.post('/login', formdata)
       .then(({data}) => {
         setLoad(false)
-        console.log(data);
         dispatch(setUser(data.user))
         dispatch(setToken(data.token))
       })
       .catch(err => {
-        console.log(err.response.data.errors)
         setLoad(false)
-        // const response = err.response;
-        // if (response && response.status === 422) {
-        //   setErrors(response.data.errors)
-        // }
       })
 };
-
-
-
-// const handleSubmit=async(e)=>{
-//   e.preventDefault();
-//   await fetch('http://127.0.0.1:8000/api/login',{
-//     method:'POST',
-//     headers:{'Content-Type':'application/json'},
-//     credentials:'include',
-//     body:JSON.stringify({
-//       email,
-//       password
-//     })
-//   })
-// }
 
 
   return (
@@ -92,30 +71,6 @@ function Login() {
 
     </div>
 
-
-
-
-
-
-
-
-
-
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     email:
-    //     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-       
-    //   </label>
-    //   <br />
-    //   <label>
-    //     Password:
-    //     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //     {error && <div><span>email or password are incorrect!!</span></div>}
-    //   </label>
-    //   <br />
-    //   <button type="submit">Login</button>
-    // </form>
   );
 }
 

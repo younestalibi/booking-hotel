@@ -5,19 +5,14 @@ import Navbar from "../../components/navbar/navbar";
 import "./ListHotels.css";
 import { Link } from "react-router-dom";
 import Footer from '../../components/footer/Footer'
-import { differenceInDays, format, set } from "date-fns";
+import {format } from "date-fns";
 import { DateRange } from "react-date-range";
 import {IoIosMan} from 'react-icons/io'
 import { cities } from "../../data/dataForm";
-// import SearchItem from "../../components/searchItem/SearchItem";
-// import {faBed,faCalendarDays,faCar,faPerson,faPlane,faTaxi,} from "@fortawesome/free-solid-svg-icons";
 import {BsSearch} from 'react-icons/bs'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Items from "../../components/items/Items";
-import Pagination from "../../components/pagination/Pagination";
 import { useSelector } from "react-redux";
 import axiosClient from "../../axios-client";
-// import { Hotels } from "../../data/Hotels";
 const ListHotels = () => {
     const Hotels = useSelector((state) => state.Hotels.hotels)
     const location = useLocation();
@@ -37,11 +32,6 @@ const ListHotels = () => {
             };
         });
     };
-    const uniquescities = Hotels.filter((obj, index, self) =>
-        index === self.findIndex((t) => (
-            t.city === obj.city
-        ))
-    );
     const [listHotels,setListHotels]=useState([])
     const [load,setLoad]=useState(true)
     const [links,setLinks]=useState()
@@ -53,29 +43,19 @@ const ListHotels = () => {
             }
         })
         .then(({data})=>{
-            console.log(data.hotels)
-
             setLoad(false)
             setLinks(data.hotels)
             setListHotels(data.hotels.data)
 
         })
         .catch(({response})=>{
-            console.log(response.status)            
             setLoad(false)
-
         })
     }
 
     useEffect(() => {
         getHotels(destination);
     },[]);
-    // console.log(listHotels)
-
-
-
-
-
 
     const [errdestination,setErrdestination]=useState(destination)
     function handleFilter(){
@@ -98,26 +78,19 @@ const ListHotels = () => {
             }
         })
         .then(({data})=>{
-            console.log(data.hotels.links)
             setLoad(false)
-            console.log(data.hotels)
             setLinks(data.hotels)
             setListHotels(data.hotels.data)
-            
-
-
         })
         .catch(({response})=>{
-            console.log(response.status)            
             setLoad(false)
-
         })
     }
 
 
 
-    
-    return ( 
+
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
@@ -138,19 +111,19 @@ const ListHotels = () => {
                         {/* ---- destination --- */}
                         <div className="filter-form search">
                             <label>Destination</label>
-                            <input placeholder={destination} value={destination} 
+                            <input placeholder={destination} value={destination}
                             onChange={(e)=>{setDestination(e.target.value)}}
                             onFocus={(e)=>{setOpensearch(true)}}
                             onBlur={()=>{setTimeout(function turntofals(){setOpensearch(false)},200)}}
                              type="text" />
-                            
+
                                 {openSearch &&
-                                   <div className="search-suggestions"> 
+                                   <div className="search-suggestions">
                                     {cities.map((e,i)=>{
                                         if(e.ville.toUpperCase().startsWith(destination.toUpperCase())&&destination.length>0){
                                             return(
-                                                <div 
-                                                    className="search-item" 
+                                                <div
+                                                    className="search-item"
                                                     onClick={()=>{setDestination(e.ville)}}
                                                     key={i}
                                                 >
@@ -158,11 +131,11 @@ const ListHotels = () => {
                                                 </div>
                                             )
                                         }
-                                        
+
                                     })}
                                     </div>
                                 }
-                            
+
                         </div>
                         {/* ---- calendr --- */}
                         <div className="filter-form">
@@ -285,16 +258,13 @@ const ListHotels = () => {
                         </div>
                         :
                         <div className="listResult">
-                            {/* {listHotels.length>0 && <h1>{listHotels[0].city}: {listHotels.length} properties found</h1>} */}
                             {listHotels.length>0 && <h1>{links.total} properties found</h1>}
                             {
                                 listHotels.length>0?
                                     listHotels.map((e,i)=>{
-                                        // if(e.city.toUpperCase()==destination.toUpperCase()){
-                                            return (
-                                                <Items key={i} hotel={e}/>
-                                            ) 
-                                        // }
+                                        return (
+                                            <Items key={i} hotel={e}/>
+                                        )
                                     })
                                     :
                                     <div className="not-found">
@@ -303,29 +273,54 @@ const ListHotels = () => {
                                         <div>There are no matching properties for your search criteria. Try updating your search.</div>
                                     </div>
                             }
-            
-                            {/* {listHotels.length>0 &&<Pagination links={links}/>} */}
+
                             {listHotels.length>0&&
                                 <div className="pagination">
                                     {
                                         links.links.map((e,i)=>{
-                                            return(
-                                                <button key={i} link={e.url} 
-                                                    className={e.active?'active':''}
-                                                    disabled={e.url==null?true:false}
-                                                    onClick={()=>{handlePagination(e.url)}}  
-                                                >
-                                                    {e.label}
-                                                </button>
-                                            )
+                                            console.log()
+                                            if(i==0){
+                                                return(
+                                                    <button key={i} link={e.url}
+                                                        className={e.active?'active':''}
+                                                        disabled={e.url==null?true:false}
+                                                        onClick={()=>{handlePagination(e.url)}}
+                                                    >
+                                                        Previous
+                                                    </button>
+                                                )
+                                            }
+                                            else if(i==links.links.length-1){
+                                                return(
+                                                    <button key={i} link={e.url}
+                                                        className={e.active?'active':''}
+                                                        disabled={e.url==null?true:false}
+                                                        onClick={()=>{handlePagination(e.url)}}
+                                                    >
+                                                        Next
+                                                    </button>
+                                                )
+                                            }
+                                            else{
+                                                return(
+                                                    <button key={i} link={e.url}
+                                                        className={e.active?'active':''}
+                                                        disabled={e.url==null?true:false}
+                                                        onClick={()=>{handlePagination(e.url)}}
+                                                    >
+                                                        {e.label}
+                                                    </button>
+                                                )
+                                            }
+
                                         })
                                     }
                                 </div>
                             }
                         </div>
                     }
-                    
-                    
+
+
 
                 </div>
             </div>
@@ -338,5 +333,5 @@ const ListHotels = () => {
         </div>
      );
 }
- 
+
 export default ListHotels;

@@ -27,7 +27,7 @@ function Register() {
 
 console.log(user)
   const token=useSelector(state=>state.auth.token)
-  
+
   useEffect(()=>{
     if(token){
       navigate('/')
@@ -47,17 +47,11 @@ console.log(user)
     axiosClient.post('/register', formdata)
       .then(({data}) => {
         setLoad(false)
-        console.log(data);
         dispatch(setUser(data.user))
         dispatch(setToken(data.token))
       })
       .catch(err => {
-        console.log(err.response.data.errors.password)
         setLoad(false)
-        // const response = err.response;
-        // if (response && response.status === 422) {
-        //   setErrors(response.data.errors)
-        // }
       })
 };
 
@@ -91,7 +85,7 @@ console.log(user)
               <input className='form-input' type="password" value={password} onChange={(e) => {setPassword(e.target.value);setError(false)}} />
               <label>confirm password</label>
               <input className='form-input' type="password" value={confirmPass} onChange={(e) => {setconfirmPass(e.target.value);setError(false)}} />
-              
+
               <button disabled={load} type="submit">{load?'Loading...':'Register'}</button>
 
               {error && <div><span className='error-login'>The Email already used!</span></div>}
@@ -118,7 +112,7 @@ console.log(user)
     //   <label>
     //     Username:
     //     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-       
+
     //   </label>
     //   <br />
     //   <label>

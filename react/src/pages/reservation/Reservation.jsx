@@ -8,23 +8,11 @@ import Header from "../../components/header/header";
 import Email from "../../components/email/Email";
 import Footer from "../../components/footer/Footer";
 import axiosClient from "../../axios-client";
-import { useSelector } from "react-redux";
 const Reservation = () => {
-    // const user=useSelector(state=>state.auth.user)
-    // const navigate=useNavigate();
-    // useEffect(()=>{
-    //     if(!user){
-    //         navigate('/login')
-    //     }
-    // },) 
-
-
     const location = useLocation();
 
     const [room, setRoom] = useState(location.state.room);
     const [hotel, setHotel] = useState(location.state.hotel);
-    // console.log(room)
-    // console.log(location)
     const [openDate, setOpenDate] = useState(true);
     const [date, setDate] = useState([
         {
@@ -33,13 +21,6 @@ const Reservation = () => {
         key: "selection",
         },
     ]);
-    // console.log(new Date(date[0].startDate))
-    // const [a,seA]=useState()
-    // const [check_in_date,setCheck_in_date]=useState()
-    // const [check_out_date,setCheck_out_date]=useState()
-    // const [total_price,setTotal_price]=useState()
-    // const [name,setName]=useState()
-    // const [total_price,setTotal_price]=useState()
     const navigate=useNavigate()
     const [formData, setFormData] = useState({
         room_id: room.id,
@@ -53,55 +34,26 @@ const Reservation = () => {
         max_people:1,
         phone:'',
       })
-    //   console.log(formData)
-    //   const handleDate=()=>{
-    //     // alert('hi')
-    //     console.log('start')
-    //     console.log(format(date[0].startDate, "yyyy-MM-dd"))
-    // //    const edite=()=>{
-    //     // const date1 =new Date(format(date[0].startDate, "MM/dd/yyyy")).getTime()
-    //     // const date2 =new Date(format(date[0].endDate, "MM/dd/yyyy")).getTime()
-    //     // const difference=date2-date1
-    //     // const TotalDays = Math.ceil(difference / (1000 * 3600 * 24))
-    //     // const hello=format(date[0].startDate, "MM/dd/yyyy")
-    //     // setFormData({ ...formData, check_in_date:format(date[0].startDate, "MM/dd/yyyy"), check_out_date:format(date[0].endDate, "MM/dd/yyyy"), total_price:TotalDays*hotel.min_price })
-
-
-    //     console.log(formData)
-    //     console.log('end')
-    //   }
       const date1 =new Date(format(date[0].startDate, "MM/dd/yyyy")).getTime()
         const date2 =new Date(format(date[0].endDate, "MM/dd/yyyy")).getTime()
         const difference=date2-date1
         const TotalDays = Math.ceil(difference / (1000 * 3600 * 24))
       const handelReservation= async() => {
-        // const something=()=>{
-        //     setFormData({...formData,check_in_date:format(date[0].startDate, "MM/dd/yyyy")})
-
-        // }
-        // something()
-
         console.log(formData)
         console.log(format(date[0].startDate, "MM/dd/yyyy"))
         axiosClient.post('/reservation',{
             ...formData,check_out_date:format(date[0].endDate, "yyyy-MM-dd"),check_in_date:format(date[0].startDate, "yyyy-MM-dd"),total_price:TotalDays*room.price_per_night
         })
         .then(({data})=>{
-        //   setHotel(data.hotel[0])
-        //   setLoad(false)
         navigate('/inscreption', { state: {data:{
             ...formData,check_out_date:format(date[0].endDate, "yyyy-MM-dd"),check_in_date:format(date[0].startDate, "yyyy-MM-dd"),total_price:TotalDays*room.price_per_night
         }} })
-          console.log(data)
         })
         .catch(({response})=>{
-        //   setLoad(false)
-
             console.log(response)
-            console.log('hello')
         })
     }
-    return ( 
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
@@ -117,7 +69,7 @@ const Reservation = () => {
                     <code> {'>'} </code>
                     <span className="path-resluts">Reservation</span>
                 </div>
-          </div> 
+          </div>
             <div className="reservation-form" >
                 <div className="reserve-wrapper">
                     <h1>Reservation</h1>
@@ -140,7 +92,7 @@ const Reservation = () => {
                             <label htmlFor=""><span>*</span> Last name:</label>
                             <input className="inputs" type="text" value={formData.last_name} onChange={(e) => {setFormData({ ...formData, last_name: e.target.value })}}/>
                             <label htmlFor=""><span>*</span> Email:</label>
-                            <input className="inputs" type="email" value={formData.email} onChange={(e) => {setFormData({ ...formData, email: e.target.value })}} /> 
+                            <input className="inputs" type="email" value={formData.email} onChange={(e) => {setFormData({ ...formData, email: e.target.value })}} />
                             <label htmlFor=""><span>*</span> check in date & check out date</label>
                             <div className="date-wrapper" >
                                 <span
@@ -169,16 +121,12 @@ const Reservation = () => {
                             <button className="reserve" onClick={handelReservation}>Submit</button>
                         </div>
                     </div>
-                    
-
-
                 </div>
-            
             </div>
             <Email/>
             <Footer/>
         </div>
      );
 }
- 
+
 export default Reservation;

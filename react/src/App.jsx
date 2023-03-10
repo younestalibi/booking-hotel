@@ -12,8 +12,6 @@ import axiosClient from './axios-client';
 import { useDispatch } from 'react-redux';
 import { setUser } from './data/authSlice';
 import {PropagateLoader} from 'react-spinners'
-
-import Dudd from './pages/Register/Dudd';
 import Posts from './pages/Posts/Posts';
 import AddRoom from './pages/Posts/AddRoom';
 import Reservation from './pages/reservation/Reservation';
@@ -31,12 +29,8 @@ function App() {
         .then(({data})=>{
             dispatch(setUser(data))
             setLoading(false)
-            console.log('again')
-            console.log(loading)
         })
         .catch(({response})=>{
-          console.log(response)
-            console.log(response.status)
             if(response.status==401){
                 dispatch(setUser(null))
             }
@@ -46,21 +40,8 @@ function App() {
     checkAuthStatus();
 },[]);
 
-
-// useEffect(() => {
-//   async function test(e){
-//       axiosClient.get('/users')
-//       .then(({data})=>{
-//           console.log(data)
-//       })
-//       .catch(({response})=>{
-//           console.log(response.status)
-//       })
-//   }
-//   test();
-// },[]);
   return (
-    
+
     <div className="App">
       {
         loading?
@@ -72,7 +53,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/hotels" element={<ListHotels/>}/>
-          <Route path="/hotels/:id" element={<Hotel/>}/> 
+          <Route path="/hotels/:id" element={<Hotel/>}/>
           <Route path="/favorite" element={<Favorite/>}/>
           <Route path="/list-property" element={<ListProperty/>}/>
           <Route path="/login" element={<Login/>}/>

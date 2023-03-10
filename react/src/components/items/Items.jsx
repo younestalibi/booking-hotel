@@ -4,18 +4,14 @@ import {BsHeartFill} from 'react-icons/bs'
 import {BsHeart} from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux';
 import { addfavorite ,deletefavorite} from "../../data/favoriteSlice";
-import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Items = (props) => {
   const hotel=props.hotel
   const dispatch=useDispatch()
   const selectedHotels = useSelector((state) => state.favorite.selectedHotels).find(e=>{if(e.id==hotel.id){return 'hello worl'}})
-
   const check =selectedHotels?true:false
-  // console.log(check)
   const notify = () => toast(`${hotel.name} saved successfully!!`);
-  // console.log(hotel)
   return (
     <div className="item-container">
 
@@ -27,7 +23,7 @@ const Items = (props) => {
           <BsHeartFill className="fav-heart" onClick={()=>{dispatch(deletefavorite(hotel.id))}}/>
         }
         <ToastContainer position="bottom-left" autoClose={4000} theme="dark"/>
-        <img 
+        <img
           src={hotel.images[0].image}
           alt=""
           className="image-item"
@@ -39,12 +35,12 @@ const Items = (props) => {
         <span style={{color:'blue'}} className="info-item">{hotel.city}</span>
           <span className="info-item">{hotel.center}m from center</span>
           {
-          hotel.beach==1 && 
+          hotel.beach==1 &&
           <span className="info-item">Beach Nearby</span>
           }
-          
+
         </div>
-        
+
         <span className="subtitle-item">{hotel.subtitle}</span>
         <span className="features-item">Entire studio • 1 bathroom • 21m² 1 full bed</span>
         <span className="cancele-item">Free cancellation </span>
@@ -61,7 +57,7 @@ const Items = (props) => {
           <Link className="check-item" to={`/hotels/${hotel.id}`}>See availability</Link>
         </div>
       </div>
-      
+
     </div>
   );
 };

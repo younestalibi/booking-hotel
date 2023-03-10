@@ -1,6 +1,3 @@
-// import {faBed,faCalendarDays,faCar,faPerson,faPlane,faTaxi,} from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {FaBed ,FaPlane} from 'react-icons/fa'
 import {BiTaxi} from 'react-icons/bi'
 import {BsFillCalendarMinusFill} from 'react-icons/bs'
@@ -9,17 +6,13 @@ import {IoIosMan} from 'react-icons/io'
 import "./header.css";
 import { DateRange } from "react-date-range";
 import { useState } from "react";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-// import { Hotels } from "../../data/Hotels"
-import { useSelector } from "react-redux";
-
 import {cities} from '../../data/dataForm'
 
 const Header = ({ page }) => {
-    const Hotels = useSelector((state) => state.Hotels.hotels)
     const [destination, setDestination] = useState("");
     const [date, setDate] = useState([
         {
@@ -48,14 +41,6 @@ const Header = ({ page }) => {
     const handleSearch = () => {
         navigate("/hotels", { state: { destination, date, options } });
     };
-
-    // const uniquescities = Hotels.filter((obj, index, self) =>
-    //     index === self.findIndex((t) => (
-    //         t.city === obj.city
-    //     ))
-    // );
-
-
     return (
         <div className="header">
         <div className={page === "hotels" ? "headerContainer hotels-page" : "headerContainer listMode"}>
@@ -113,7 +98,7 @@ const Header = ({ page }) => {
                         date[0].endDate,
                         "MM/dd/yyyy"
                         )}`}</span>
-                        
+
                         {openDate && (
                         <DateRange
                             editableDateInputs={true}
@@ -207,12 +192,12 @@ const Header = ({ page }) => {
                 </div>
                 {
                 openSearch &&
-                    <div className="home-search-dest"> 
+                    <div className="home-search-dest">
                             {cities.map((e,i)=>{
                                 if(e.ville.toUpperCase().startsWith(destination.toUpperCase())&&destination.length>0){
                                     return(
-                                        <div 
-                                            className="home-search-item" 
+                                        <div
+                                            className="home-search-item"
                                             onClick={()=>{setDestination(e.ville)}}
                                             key={i}
                                         >
@@ -220,10 +205,10 @@ const Header = ({ page }) => {
                                         </div>
                                     )
                                 }
-                                    
-                            })}    
-                        
-                    </div> 
+
+                            })}
+
+                    </div>
                 }
             </div>
             )}

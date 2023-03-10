@@ -9,14 +9,9 @@ import ReactToPrint from 'react-to-print';
 import { Link } from "react-router-dom";
 const Inscreption = () => {
     const location = useLocation();
-
     const [data, setRoom] = useState(location.state.data);
-    console.log(location)
-    const inscription=()=>{
-
-    }
     const ref=useRef()
-    return ( 
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
@@ -26,15 +21,13 @@ const Inscreption = () => {
                         <h4>Your inscription</h4>
                         <ReactToPrint
                         trigger={() => {
-                            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                            // to the root node of the returned component as it will be overwritten.
                             return <button >Download</button>;
                         }}
                         content={() => ref.current}
                         documentTitle='reservation'
                         />
                         <Link to='/'>Home</Link>
-                        
+
                     </div>
                     <div ref={ref} className="inscreption-content">
                         <h1>Inscription for reservation</h1>
@@ -47,9 +40,7 @@ const Inscreption = () => {
                         <div>How many geusts: <b>{data.max_people}</b></div>
                         <div>Check in: <b>{data.check_in_date}</b></div>
                         <div>Check out: <b>{data.check_out_date}</b></div>
-
-
-                    </div> 
+                    </div>
                 </div>
             </div>
             <Email/>
@@ -57,5 +48,5 @@ const Inscreption = () => {
         </div>
      );
 }
- 
+
 export default Inscreption;

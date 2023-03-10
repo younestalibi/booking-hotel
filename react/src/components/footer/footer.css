@@ -4,7 +4,9 @@
   font-size: 12px;
   margin: auto;
 }
-
+.fText{
+    text-align: center;
+}
 .footer-container{
   width: 100%;
   display: flex;

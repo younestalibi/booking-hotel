@@ -12,40 +12,33 @@ const Navbar = () => {
         axiosClient.post('/logout')
         .then(({data}) => {
             dispatch(setToken())
-            dispatch(setUser()) 
-        })  
+            dispatch(setUser())
+        })
     }
-  
-    return ( 
-        <div className="navbar"> 
+
+    return (
+        <div className="navbar">
             <div className="navbar-Container">
                 <Link className="title" to="/">Booking.com</Link>
                 <div className="navbar-Items">
-                    {/* <Link to='/favorite' className="favorite"><BsHeartFill className="BsHeartFill"/></Link>
-                    <Link to='/list-property' className="list-nav">List your property</Link> */}
                     {
-                    !user && 
+                    !user &&
                     <div className="auth">
                         <Link className="navAuth" to='/register'>Register</Link>
                         <Link className="navAuth" to='/login'>Login</Link>
                     </div>
-                    } 
+                    }
                     {
-                    user && 
+                    user &&
                     <div className="profile">
                         <Link to='/favorite' className="favorite"><BsHeartFill className="BsHeartFill"/></Link>
                     <Link to='/list-property' className="list-nav">List your property</Link>
                         <Link to='/posts' className="list-nav">My property</Link>
-                        <div onClick={logout}>Logout</div>    
+                        <div onClick={logout}>Logout</div>
                         <b><span>Hello,</span>{user.name}</b>
                         <div className="image-profile">
                             <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1" alt="" />
-                        </div> 
-                        {/* <div className="dropdownmenu">
-             
-                        </div> */}
-  
-                                         
+                        </div>
                     </div>
                     }
                 </div>
@@ -53,5 +46,5 @@ const Navbar = () => {
         </div>
      );
 }
- 
+
 export default Navbar;

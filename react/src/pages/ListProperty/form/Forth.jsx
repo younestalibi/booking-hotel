@@ -7,24 +7,17 @@ const Forth = ({ formData, setFormData }) => {
         setFormData({ ...formData, images:files});
       };
 
-console.log(formData)
-
-
-    return ( 
+    return (
         <div className='input-form'>
             <label htmlFor="hotel-upload"><span>* </span>Selecte some images for your item:</label>
-   
-            <input type="file" id='hotel-upload' className="hotel-upload" 
-                onChange={(e) => {setFormData({ ...formData, images:[...formData.images ,e.target.files[0]] })}} 
+
+            <input type="file" id='hotel-upload' className="hotel-upload"
+                onChange={(e) => {setFormData({ ...formData, images:[...formData.images ,e.target.files[0]] })}}
             />
             <div className="upload-hotel-container">
                 <div className="upload-image-hotel" onClick={()=>{document.getElementById('hotel-upload').click()}}>
                     <AiOutlinePlus/>
                 </div>
-
-
-
-
                 {formData.images.length > 0 && (
                     <div className="selected-images">
                     {formData.images.map((file, index) => (
@@ -43,29 +36,9 @@ console.log(formData)
                     ))}
                     </div>
                 )}
-
-
-
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-                
-            
         </div>
      );
 }
- 
+
 export default Forth;

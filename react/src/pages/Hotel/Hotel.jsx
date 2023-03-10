@@ -18,18 +18,9 @@ import { addfavorite ,deletefavorite} from "../../data/favoriteSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axiosClient from "../../axios-client";
-// import Reservation from "./Reservation";
 const Hotel = () => {
     const {id}=useParams()
-    // const Hotels = useSelector((state) => state.Hotels.hotels)
     const [hotel,setHotel]=useState([])
-    // console.log(Hotels)
-    // const hotel=Hotels.filter((e)=>e.id=1)
-    // const hotel=Hotels.find((e)=>{
-    //   return e.id==id
-    // })
-    // console.log(id)
-    const [is,setIs]=useState()
 const [load,setLoad]=useState(true)
     useEffect(() => {
       const getHotel= async(id) => {
@@ -41,24 +32,18 @@ const [load,setLoad]=useState(true)
         .then(({data})=>{
           setHotel(data.hotel[0])
           setLoad(false)
-          console.log(data.hotel[0])
         })
         .catch(({response})=>{
           setLoad(false)
-
-            console.log(response.status)
         })
     }
     getHotel(id);
   },[]);
-    console.log(hotel)
-    
 
     const [currentImage, setCurrentImage] = useState(0);
     const [slideDirection, setSlideDirection] = useState('');
     const [openSlide,setOpenslide]=useState(false)
     var images=hotel.images
-    // images=[...images,hotel.images.main]
     const handlePrev = () => {
       setCurrentImage(currentImage === 0 ? images.length - 1 : currentImage - 1);
       setSlideDirection('slide-right');
@@ -71,42 +56,22 @@ const [load,setLoad]=useState(true)
     const handleAnimationEnd = () => {
       setSlideDirection('');
     };
-    // console.log(images[currentImage])
     const dispatch=useDispatch()
     const selectedHotels = useSelector((state) => state.favorite.selectedHotels).find(e=>{if(e.id==hotel.id){return 'hello worl'}})
-  
     const check =selectedHotels?true:false
     const reservation = document.getElementById('available-rooms');
-    const [reservOpen,setReservOpen]=useState(false)
-    
-    // const renderReserve=(e)=>{
- 
-    //   if(reservOpen){
-    //     return <Reservation rooms={hotel.rooms} formData={formData} setFormData={setFormData} setReservOpen={setReservOpen}/>
-    //   }
-    // }
-    // const handelReserve=(e)=>{
-
-    //   console.log(e.target.value)
-    //   setFormData({ ...formData, room_number: parseInt(e.target.value) })
-    //   setReservOpen(!reservOpen)
-    // }
     const navigate=useNavigate()
     const handleReserveation = (e) => {
-      // console.log(e.target.value)
       const room=e.room
       const hotel=e.hotel
       navigate("/Reservation", { state: { room,hotel} });
-      console.log(e)
-      // console.log(room)
   };
 
-    return ( 
+    return (
         <div>
-          
+
           <Navbar/>
           <Header page='hotels'/>
-          {/* {renderReserve()} */}
           <div className="path-container">
                 <div className="path-hotels">
                     <span>Home </span>
@@ -117,7 +82,7 @@ const [load,setLoad]=useState(true)
                     <code> {'>'} </code>
                     <span className="path-resluts">{hotel.name}</span>
                 </div>
-          </div> 
+          </div>
           {openSlide &&
             <div className="image-slider">
               <IoMdClose className='close' onClick={()=>{setOpenslide(false)}} />
@@ -134,7 +99,7 @@ const [load,setLoad]=useState(true)
               <div className="number-image">{currentImage}</div>
             </div>
           }
-          
+
           {
           load?
           <div className="loader-hotel"></div>
@@ -144,8 +109,6 @@ const [load,setLoad]=useState(true)
                 <div className="header-hotel">
                   <b className="feedback">Excelent hotel</b>
                   <div className="heart-hotel">
-                    {/* <AiOutlineHeart className="heart"/> */}
-
                     {!check &&
                       <BsHeart className="heart" onClick={()=>{dispatch(addfavorite(hotel));notify()}}/>
                     }
@@ -166,7 +129,7 @@ const [load,setLoad]=useState(true)
                     <span className="info-item"><GrLocation/> {hotel.city}</span>
                     <span className="info-item">{hotel.center}m from center</span>
                     {
-                      hotel.beach==1 && 
+                      hotel.beach==1 &&
                       <span className="info-item">Beach Nearby</span>
                     }
                   </div>
@@ -208,11 +171,10 @@ const [load,setLoad]=useState(true)
                         <div className="more-info-reserv">
                         <div className="info-item">{hotel.center}m from center</div>
                         {
-                          hotel.beach==1 && 
+                          hotel.beach==1 &&
                           <div className="info-item">Beach Nearby</div>
                         }
                         </div>
-                        {/* <button className="reserv-button">Reserve</button> */}
                       </div>
                     </div>
                   </div>
@@ -238,28 +200,25 @@ const [load,setLoad]=useState(true)
                             <td>{`${e.max_people}-person`}</td>
                             <td>{`${e.price_per_night} MAD`}</td>
                             <td >
-                              <button  onClick={()=>{handleReserveation({room:e,hotel:hotel})}} disabled={e.is_available==0} className={e.is_available==1?'reserv-button':'notSvailble'}>                            
+                              <button  onClick={()=>{handleReserveation({room:e,hotel:hotel})}} disabled={e.is_available==0} className={e.is_available==1?'reserv-button':'notSvailble'}>
                               {e.is_available==1?'Reserve':'Not availble'}
                               </button>
-                              {/* <Link to={`/reservation/${e.id}`} disabled={e.is_available==0} className={e.is_available==1?'reserv-button':'notSvailble'}>  
-                                {e.is_available==1?'Reserve':'Not availble'}
-                              </Link> */}
                             </td>
                           </tr>
                         )
                       })}
                     </tbody>
-                    
+
                   </table>
                 </div>
-                
+
               </div>
               <Email/>
               <Footer/>
-          </div> 
+          </div>
           }
         </div>
      );
 }
- 
+
 export default Hotel;

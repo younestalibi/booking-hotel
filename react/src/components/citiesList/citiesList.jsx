@@ -1,6 +1,6 @@
 import './citiesList.css'
 const CitiesList = () => {
-    return ( 
+    return (
             <div className='cities-container'>
                 <div className='first-city cityOnFocus'>
                     <img
@@ -8,7 +8,7 @@ const CitiesList = () => {
                     alt=""
                     />
                     <div className='city-content'>
-                        <b>Madrid</b>
+                        <b>Rabat</b>
                     </div>
                 </div>
                 <div className='second-city cityOnFocus'>
@@ -48,8 +48,8 @@ const CitiesList = () => {
                     </div>
                 </div>
             </div>
-            
+
      );
 }
- 
+
 export default CitiesList;

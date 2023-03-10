@@ -20,7 +20,7 @@ const ListProperty = () => {
         if(!user){
             navigate('/login')
         }
-    },) 
+    },)
 
 
     const [page, setPage] = useState(0);
@@ -34,7 +34,7 @@ const ListProperty = () => {
         subtitle: "",
         description: "",
         min_price: 0,
-        rooms: 0,        
+        rooms: 0,
         rate: 0,
         images:[],
 
@@ -58,10 +58,10 @@ const ListProperty = () => {
         } else if (page === 1) {
         return <Second formData={formData} setFormData={setFormData} />;
         } else if(page==2) {
-        return <Third formData={formData} setFormData={setFormData} />; 
+        return <Third formData={formData} setFormData={setFormData} />;
         }
         else if(page==3) {
-            return <Forth formData={formData} setFormData={setFormData} />; 
+            return <Forth formData={formData} setFormData={setFormData} />;
             }
         else{
         return <Room formData={formData} setFormData={setFormData} />;
@@ -70,8 +70,6 @@ const ListProperty = () => {
 
 
 
-console.log(formData)
-const [error,setError]=useState(false)
 const [load,setLoad]=useState(false);
 const [success,setSuccess]=useState(false)
 
@@ -85,13 +83,9 @@ const nextHandel=() => {
         })
         .then(({data}) => {
             setLoad(false)
-            console.log(data);
-
-            // navigate('/')
             setSuccess(true)
         })
         .catch(err => {
-            console.log(err)
             setLoad(false)
         })
     } else {
@@ -100,7 +94,7 @@ const nextHandel=() => {
     }
 
 
-    return ( 
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
@@ -110,7 +104,7 @@ const nextHandel=() => {
                     <code>{'>'} </code>
                     <span className='path-resluts'>Listing Property</span>
                 </div>
-            </div> 
+            </div>
             {success?
             <Fade>
                 <div className='success-container'>
@@ -138,7 +132,7 @@ const nextHandel=() => {
                             <div class={page >= 3 ? "cirxle active":'cirxle'}>4</div>
                             <div class={page == 4 ? "cirxle active":'cirxle'}>5</div>
                         </div>
-                    </div>    
+                    </div>
                     <div className="header-form">
                         <h1>{FormTitles[page]}</h1>
                     </div>
@@ -161,15 +155,15 @@ const nextHandel=() => {
                             disabled={load}
                         >
                             {load?'submiting...':<span>{page === FormTitles.length - 1 ? "Submit" : "Next"}</span>}
-                            
+
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             }
         </div>
      );
 }
- 
+
 export default ListProperty;

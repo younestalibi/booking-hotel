@@ -11,12 +11,10 @@ const Favorite = () => {
     const selectedHotels = useSelector((state) => state.favorite.selectedHotels)
     const dispatch=useDispatch()
 
-    return ( 
+    return (
         <div>
             <Navbar/>
             <Header page='hotels'/>
-
-
             <div className='table-wrapper'>
                 {selectedHotels.length==0?
                     <div className='savednotfound'>
@@ -34,7 +32,7 @@ const Favorite = () => {
                             <th>Price</th>
                             <th>Details</th>
                             <th>Delete</th>
-                            
+
                         </tr>
                         {
                         selectedHotels.map((e,i)=>{
@@ -55,20 +53,20 @@ const Favorite = () => {
                                         delete
                                         </button>
                                     </td>
-                                    
+
                                 </tr>
                             )
                         })
                         }
                         </table>
-                    </div>           
+                    </div>
                 }
             </div>
             <Email/>
             <Footer/>
-        
+
         </div>
      );
 }
- 
+
 export default Favorite;
