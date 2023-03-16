@@ -1,0 +1,63 @@
+
+.cities-container{
+    width: 100%;
+    max-width: 1024px; 
+    display: flex;
+    justify-content: space-between;
+    /* background-color: blue; */
+    height: 550px !important;
+    flex-wrap: wrap;
+}
+.first-city{
+    /* background-color: red; */
+    height: 50% !important;
+    width: 49%;
+    border: 5px solid rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    position: relative;
+}
+.second-city{
+    /* background-color: red; */
+    height: 50% !important;
+    width: 49%;
+    border: 5px solid rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    position: relative;
+}
+.third-city{
+    /* background-color: red; */
+    height: 50% !important;
+    width: 32%;
+    border: 5px solid rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: relative;
+}
+.cities-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+.cityOnFocus{
+    transition: 0.4s;
+}
+.cityOnFocus:hover{
+    scale: 1.02;
+    cursor: pointer;
+}
+.city-content{
+    background-color: rgba(0, 0, 0, 0.037);
+    height: 100%;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+.city-content b{
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 22px;
+}

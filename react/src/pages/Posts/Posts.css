@@ -1,0 +1,121 @@
+.posts-container{
+    /* background-color: red; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+.posts-wrapper{
+    /* background-color: blue; */
+    width: 100%;
+    max-width: 1024px;
+}
+.posts-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.posts-header div{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.add-item{
+    background-color: rgb(149, 0, 255);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.add-item:hover{
+    background-color: rgb(128, 6, 215);
+}
+.posts-body{
+    /* background-color: green; */
+    padding: 20px;
+}
+
+
+.posts-body table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0px 0px 4px;
+  }
+  
+  .posts-body th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+  }
+  
+  .posts-body tr:hover {background-color: #D6EEEE;}
+  .post-image{
+    width: 200px;
+    height: 130px;
+    object-fit: cover;
+  }
+
+
+
+
+  .loader-posts {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    border: 3px solid black;
+    border-top-color: transparent;
+    animation: rot1 1.2s linear infinite;
+    height: 100v;
+    margin: 30vh auto;
+  }
+  
+  @keyframes rot1 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+.posts-not-found{
+    width: 100%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 65vh;
+    max-width: 1024px;
+}
+
+.form-wrapper{
+  /* background-color: blue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.form-wrapper .input-form{
+  /* background-color: red; */
+  width: 100%;
+  max-width: 1024px;
+}
+.form-wrapper .input-form button{
+  width: 100px;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(165, 24, 216);
+  cursor: pointer;
+}
+.form-wrapper .input-form button:hover{
+  background-color: rgb(143, 20, 187);
+
+}
+.form-wrapper .input-form button:disabled{
+  background-color: rgb(106, 26, 135);
+  cursor: default;
+}

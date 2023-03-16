@@ -1,0 +1,140 @@
+.item-container {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* line-height: 18px; */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.rate-item{
+  display: flex;
+  justify-content: flex-end
+}
+
+.info-item {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.siTaxiOp {
+  font-size: 12px;
+  background-color: #008009;
+  color: white;
+  width: max-content;
+  padding: 3px;
+  border-radius: 5px;
+}
+.details-item-text{
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+.fav-heart{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: rgb(255, 0, 85);
+  font-weight: bold;
+  cursor: pointer;
+}
+.fav-heart:hover{
+  scale: 1.2;
+}
+.details-item-text .item-price{
+  font-size: 22px;
+  margin-top: 30px;
+}
+
+.item-taxes{
+  font-size: 12px;
+  color: gray;
+}
+
+.check-item{
+  background-color: #0071c2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 5px;
+  font-weight: 500;
+}
+
+
+.image-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.subtitle-item{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.features-item{
+  font-size: 12px;
+}
+
+.cancele-item{
+  font-size: 12px;
+  color: #008009;
+  font-weight: bold;
+}
+
+.description-item-hotel{
+  font-size: 12px;
+}
+
+.details-item {
+  /* flex: 1; */
+  width: 150px;
+  display: flex; 
+  flex-direction: column; 
+  position: relative;
+  /* justify-content: space-between */
+}
+
+.rate-item>span{
+  font-weight: 400;
+  margin-right: 6px;
+}
+.rate-item>button{
+ background-color: #003580;
+ color: white;
+ padding: 6px 3px;
+ font-weight: bold;
+ border: none;
+}
+.image-item-container{
+  width: 220px;
+  height: 220px;
+  position: relative;
+  align-self: center;
+}
+.item-description {  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 3;
+}
+.siTitle {
+  font-size: 22px;
+  font-weight: bolder;
+  color: #0071c2;
+  margin: 0px;
+}

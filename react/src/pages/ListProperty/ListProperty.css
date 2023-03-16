@@ -1,0 +1,235 @@
+
+.form{
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+}
+.form-container{
+    /* background-color: green; */
+    width: 100%;
+    margin: 30px;
+    max-width: 1024px;
+}
+.header-form{
+    /* background-color: purple; */
+    text-align: left;
+    padding-left: 10px;
+    font-size: 13px;
+}
+.body-form{
+    /* background-color: blue; */
+    /* display: flex;
+    flex-direction: column; */
+
+}
+.input-form{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    padding:10px;
+}
+.input-form >input,.input-form >select,.input-form >textarea{
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: 1px solid rgb(93, 176, 187);
+    margin-bottom: 15px;
+}
+.input-form >input:focus,.input-form >select:focus,.input-form >textarea:focus{
+    outline: 3.5px solid rgb(0, 255, 162);
+}
+.input-form >label{
+    /* background-color: yellow; */
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: large;
+}
+.input-form >label>span{
+    color: red;
+    font-weight: bolder;
+}
+.footer-form{
+    /* background-color: pink; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+
+textarea {
+    resize: none;
+}
+.progress-container{
+    text-align: center;
+}
+.pro-container{
+    display: flex;
+    justify-content: space-between; 
+    position: relative;
+    width:80%;
+    margin: 0px auto 30px;
+}
+.error{
+    color:red;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    
+}
+.pro-container::before{
+    content: "";
+    background-color: gainsboro;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 45%;
+    z-index: -1;
+}
+#progress-bar{
+    background-color:purple;
+    position: absolute;
+    top: 45%;
+    height: 4px;
+    width: 100px;
+    z-index: -1;
+    transition: 1s ease;
+}
+.cirxle{
+    background-color: white;
+    color: gainsboro;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid;
+    margin: 0px 10px 0px 10px;
+    transition: color 0.5s ease-in ;
+}
+.active{
+    color:purple
+}
+.btn{
+    background-color: aqua;
+    padding:8px 30px;
+    border-radius: 10px;
+    border: 0px;
+    color: brown;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+}
+.btn:active{
+    transform: scale(0.93);
+}
+.btn:disabled{
+    cursor: not-allowed;
+    background-color: rgb(119, 78, 124);
+}
+.hotel-upload{
+    display: none;
+}
+.upload-hotel-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.upload-image-hotel{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 70px;
+    color: white;
+    cursor: pointer;
+    height: 160px;
+
+    background-color: rgba(53, 108, 110, 0.648);
+    transition: all 0.5s;
+    border-radius: 4px ;
+}
+.upload-image-hotel:hover{
+    scale: 1.03;
+}
+.upload-image-hotel>svg{
+    transition: 1.4s;
+}
+.upload-image-hotel:hover > svg  {
+    transform: rotate(170deg);
+}
+
+.selected-images{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 66%;
+}
+.unselected-container{
+    display: flex;
+    height: 100px;
+    position: relative;
+    margin: 5px;
+    border-radius: 3px;
+    outline: 2px solid black;
+}
+.unselected-container > svg{
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+    color: red;
+}
+.unselected-container > svg:hover{
+    scale: 1.2;
+}
+.unselected-container>img{
+    width: 150px;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 3px;
+}
+.success-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.success{
+    background-color: rgb(221, 221, 223);
+    width: 400px;
+    border-radius: 10px;
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    box-shadow: 0px 0px 10px ;
+}
+.success  h1  svg{
+    color: turquoise;
+    background-color: rgb(211, 211, 211);
+    width: 100%;
+    border: 3px solid rgb(35, 170, 73);
+    width: 200px;
+    padding: 20px;
+    border-radius: 50%;
+    color:  rgb(35, 170, 73);;
+    font-size: 50px;
+    height:200px;
+}
+.success h2{
+    font-size: 50px;
+    color:  rgb(35, 170, 73);;
+    margin: 0px;
+    font-weight: 400;
+}
+.success div{
+    font-size: 17px;
+}
